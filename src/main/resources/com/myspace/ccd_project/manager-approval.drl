@@ -1,0 +1,13 @@
+package com.myspace.ccd_project;
+
+
+rule "Manager Approval Required"
+ruleflow-group "manager-approval-check"
+dialect "mvel"
+when
+    data:FraudData(totalFraudAmount > 1000)
+then
+    System.out.println("In the then section of the rules");
+    data.setManagerApproval(true);
+    
+end

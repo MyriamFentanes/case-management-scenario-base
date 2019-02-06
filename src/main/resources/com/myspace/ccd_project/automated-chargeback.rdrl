@@ -1,0 +1,13 @@
+package com.myspace.ccd_project;
+
+import java.lang.Number;
+
+rule "automated-chargeback"
+	dialect "mvel"
+	ruleflow-group "automated-chargeback"
+	when
+		CreditCardHolder( status in ( "Gold", "Platinum" ) )
+		data : FraudData( )
+	then
+		data.setAutomated( true );
+end
